@@ -27,6 +27,6 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
 > diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSelector/ItemsSelector.spec.js
 > --- a/__tests__/ItemsSelector/ItemsSelector.spec.js
 > +++ b/__tests__/ItemsSelector/ItemsSelector.spec.js
-> .
-> .
-> .
+.
+.
+.
