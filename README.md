@@ -19,4 +19,13 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
 
 > c491a399f0d3db7570d8076b1661e7ce8389575e -> 0e2731c7684373e2ecbda2f9b2b71bf310a1dae4
 > 1744b9708a5d9397e6987ff716cc636c58cfd9f4 -> bbb0725968fd4c27fa1e8398184e7ce2750a2d8f
+> Submodule js_source/shared/sf-common 0e2731c..bbb0725 (rewind):
+>  < add fetching categories without crud
+>  < Merge pull request #244 from SAManage/17417_Incident_recordType_to_array
+>  < Merge pull request #246 from SAManage/17347_displayCIPreview
+>  < Merge pull request #243 from SAManage/17348_CisSelectorSearch
+> -----------------------------------------------------------
+> diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSelector/ItemsSelector.spec.js
+> --- a/__tests__/ItemsSelector/ItemsSelector.spec.js
+> +++ b/__tests__/ItemsSelector/ItemsSelector.spec.js
 
