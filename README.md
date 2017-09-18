@@ -36,5 +36,5 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
  .
 ---
 
-###### FORMAT="*git-show-format*" who-moved-my-pointer.sh my-submodule
+###### FORMAT="```<git-show-format>```" who-moved-my-pointer.sh my-submodule
 see: https://git-scm.com/docs/git-show
