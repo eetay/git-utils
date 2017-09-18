@@ -16,6 +16,7 @@ d68c6b910787b2d7328fd39ff0200aaac0206ba2 -> bbb0725968fd4c27fa1e8398184e7ce2750a
 ```
 
 
+
 ```sh
 > ./bin/who-moved-my-pointer.sh my-submodule f47bb34bbe1aa75a3fb9a9d0dd0ffd99134acb6a 680c09ef34d8923db9bc3d914a7101d52e5a12c9
 ```
@@ -30,6 +31,8 @@ Submodule js_source/shared/sf-common 0e2731c..bbb0725 (rewind):
   < Merge pull request #243 from SAManage/17348_CisSelectorSearch
 -----------------------------------------------------------
 diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSelector/ItemsSelector.spec.js
+--- a/__tests__/ItemsSelector/ItemsSelector.spec.js
++++ b/__tests__/ItemsSelector/ItemsSelector.spec.js
 .
 .
 .
