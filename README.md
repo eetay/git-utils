@@ -23,7 +23,7 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
 >   add fetching categories without crud
 >   Merge pull request #244 from SAManage/17417_Incident_recordType_to_array
 >   Merge pull request #246 from SAManage/17347_displayCIPreview
->   Merge pull request #243 from SAManage/17348_CisSelectorSearch
+>  =< Merge pull request #243 from SAManage/17348_CisSelectorSearch
 >  =-----------------------------------------------------------
 
 > diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSelector/ItemsSelector.spec.js
