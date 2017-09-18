@@ -1,6 +1,6 @@
 # git-utils
 
-### who-moved-my-pointer.sh ###
+## who-moved-my-pointer.sh
 utility for tracking changes in a submodule relative by commits in toplevel (parent)
 
 ---
