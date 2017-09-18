@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -z "$FORMAT" ]; then
+  FORMAT="%ar, %Cred%an%Creset"
+fi
+
 MODULE=$1
 if [ -z $MODULE ] || [ -n "$2" -a -z "$3" ]; then
   echo "Usage: $0 <module-name> [<commit> <base-commit>]"
@@ -20,5 +24,12 @@ if [ -n "$2" -a -n "$3" ]; then
 fi
 
 
-echo Listing for $MODULE_PATH
-for i in `git log | grep Merge -B 1 | grep commit | awk '{print $2}' | head -50`; do echo $i "->" `git rev-parse $i:$MODULE_PATH` "(" `git show --pretty="format:%an"  --name-only $i | head -1` ")" ; done
+echo "toplevel                                 -> $MODULE_PATH ( merged by )"
+LAST_POINTER=
+for i in `git log | grep Merge -B 1 | grep commit | awk '{print $2}' | head -50`; do 
+  NEW_POINTER=`git rev-parse $i:$MODULE_PATH`
+  if [ "$LAST_POINTER" != "$NEW_POINTER" ]; then
+    echo $i "->" $NEW_POINTER "(" `git show --pretty="format:$FORMAT"  --name-only $i | head -1` ")" 
+  fi
+  LAST_POINTER=$NEW_POINTER
+done
