@@ -1,9 +1,14 @@
 #!/bin/bash
 COMMIT_FILTER='Merge'
+MAX_HISTORY='-50'
 
 while [ $# -gt 0 ]; do
   KEY="$1"
   case $KEY in
+  -m|--max)
+    MAX_HISTORY="-$2"
+    shift # past argument
+    ;;
   -a|--all)
     COMMIT_FILTER='commit'
     ;;
@@ -32,6 +37,7 @@ fi
 if [ -z $MODULE ] || [ -n "$DIFF_TOPLEVEL" -a -z "$BASE_TOPLEVEL" ]; then
   echo "Usage: $0 <module-name> [<commit> <base-commit>]"
   echo "Optional flags: "
+  echo "    -m <number>    maximum number of commits to list"
   echo "    -a             include all toplevel commits which changed the submodule's pointer (by default only merges)"
   echo "    -f <format>    format of notes"
   echo
@@ -55,7 +61,7 @@ fi
 
 echo "toplevel                                 -> $MODULE_PATH ( merged by )"
 LAST_POINTER=
-for i in `git log | grep $COMMIT_FILTER -B 1 | grep commit | awk '{print $2}' | head -50`; do 
+for i in `git log | grep $COMMIT_FILTER -B 1 | grep commit | awk '{print $2}' | head $MAX_HISTORY`; do 
   NEW_POINTER=`git rev-parse $i:$MODULE_PATH 2> /dev/null`
   if [ $? -ne 0 ]; then
     echo $i "-> submodule not found"
