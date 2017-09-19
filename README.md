@@ -4,7 +4,7 @@
 utility for tracking changes in a submodule relative by commits in toplevel (parent)
 
 ---
-##### ./git-utils/who-moved-my-pointer.sh my-submodule
+##### who-moved-my-pointer.sh my-submodule
 
 ```
 TOPLEVEL                                 -> /path/to/my-submodule ( Commit Notes )
@@ -18,7 +18,8 @@ d68c6b910787b2d7328fd39ff0200aaac0206ba2 -> bbb0725968fd4c27fa1e8398184e7ce2750a
 
 
 ---
-##### ./git-utils/who-moved-my-pointer.sh my-submodule f47bb34bbe1aa75a3fb9a9d0dd0ffd99134acb6a 680c09ef34d8923db9bc3d914a7101d52e5a12c9
+#### difference of a submodule between two toplevel commits 
+##### who-moved-my-pointer.sh my-submodule f47bb34bbe1aa75a3fb9a9d0dd0ffd99134acb6a 680c09ef34d8923db9bc3d914a7101d52e5a12c9
 
 ```
 c491a399f0d3db7570d8076b1661e7ce8389575e -> 0e2731c7684373e2ecbda2f9b2b71bf310a1dae4
