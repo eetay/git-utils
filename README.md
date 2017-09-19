@@ -6,6 +6,7 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
 ---
 ##### ./git-utils/who-moved-my-pointer.sh my-submodule
 
+> TOPLEVEL                                 -> /path/to/my-submodule ( Commit Notes )
 > f47bb34bbe1aa75a3fb9a9d0dd0ffd99134acb6a -> bbb0725968fd4c27fa1e8398184e7ce2750a2d8f ( Naftaly )
 > 680c09ef34d8923db9bc3d914a7101d52e5a12c9 -> bbb0725968fd4c27fa1e8398184e7ce2750a2d8f ( Naftaly )
 > 167e76cd2ccb7c9d729aeea4442eb72ea728d81c -> bbb0725968fd4c27fa1e8398184e7ce2750a2d8f ( Liran )
@@ -35,6 +36,13 @@ utility for tracking changes in a submodule relative by commits in toplevel (par
  .
  .
 ---
+##### ./git-utils/who-moved-my-pointer.sh -a my-submodule
 
-##### FORMAT="```<git-show-format>```"  ./git-utils/who-moved-my-pointer.sh my-submodule
-for ```<git-show-format>``` see: https://git-scm.com/docs/git-show
+By default who-moved-my-pointer shows only merges which changed the submodule's pointer.
+This option includes all commits which changed the pointer
+
+---
+##### ./git-utils/who-moved-my-pointer.sh -f ```<git-show-format>``` my-submodule
+
+This controlls the commit notes. 
+For ```<git-show-format>``` see: https://git-scm.com/docs/git-show
