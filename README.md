@@ -4,6 +4,7 @@
 utility for tracking changes in a submodule relative by commits in toplevel (parent)
 
 ---
+### list of changes to submodule pointer, by toplevel commits 
 ##### who-moved-my-pointer.sh my-submodule
 
 ```
@@ -18,7 +19,7 @@ d68c6b910787b2d7328fd39ff0200aaac0206ba2 -> bbb0725968fd4c27fa1e8398184e7ce2750a
 
 
 ---
-#### difference of a submodule between two toplevel commits 
+### difference of a submodule between two toplevel commits 
 ##### who-moved-my-pointer.sh my-submodule f47bb34bbe1aa75a3fb9a9d0dd0ffd99134acb6a 680c09ef34d8923db9bc3d914a7101d52e5a12c9
 
 ```
@@ -39,6 +40,7 @@ diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSele
  .
 ```
 ---
+### options
 ##### ./git-utils/who-moved-my-pointer.sh -a my-submodule
 
 By default who-moved-my-pointer shows only merges which changed the submodule's pointer.
