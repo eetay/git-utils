@@ -32,7 +32,7 @@ Submodule js_source/shared/sf-common 0e2731c..bbb0725 (rewind):
   Merge pull request #246 from SAManage/17347_displayCIPreview
   Merge pull request #243 from SAManage/17348_CisSelectorSearch
 
-diff --git a/__tests__/ItemsSelector/ItemsSelector.spec.js b/__tests__/ItemsSelector/ItemsSelector.spec.js
+diff --git a/__tests__/ItemsSelector.spec.js b/__tests__/ItemsSelector.spec.js
 --- a/__tests__/ItemsSelector/ItemsSelector.spec.js
 +++ b/__tests__/ItemsSelector/ItemsSelector.spec.js
  .
