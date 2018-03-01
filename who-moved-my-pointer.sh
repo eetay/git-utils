@@ -26,10 +26,14 @@ fi
 
 echo "toplevel                                 -> $MODULE_PATH ( merged by )"
 LAST_POINTER=
-for i in `git log | grep Merge -B 1 | grep commit | awk '{print $2}' | head -50`; do 
+for i in `git log | grep ^Merge -B 1 | grep commit | awk '{print $2}' | head -50`; do 
   NEW_POINTER=`git rev-parse $i:$MODULE_PATH`
   if [ "$LAST_POINTER" != "$NEW_POINTER" ]; then
-    echo $i "->" $NEW_POINTER "(" `git show --pretty="format:$FORMAT"  --name-only $i | head -1` ")" 
+    pushd $MODULE_PATH > /dev/null
+    MODULE_POINTER_INFO="(`git show --pretty="format:$FORMAT"  --name-only $NEW_POINTER | head -1`)"
+    popd > /dev/null
+    TOPLEVEL_INFO="(`git show --pretty="format:$FORMAT"  --name-only $i | head -1`)" 
+    echo $i "$TOPLEVEL_INFO" "->" $NEW_POINTER "$MODULE_POINTER_INFO"
   fi
   LAST_POINTER=$NEW_POINTER
 done
