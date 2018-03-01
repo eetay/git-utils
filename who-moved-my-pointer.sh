@@ -2,9 +2,23 @@
 COMMIT_FILTER='^Merge'
 MAX_HISTORY='-50'
 
+function print_help() {
+  echo "Usage: $0 <module-name> [<commit> <base-commit>]"
+  echo "Optional flags: "
+  echo "    -h             print help"
+  echo "    -m <number>    maximum number of commits to list"
+  echo "    -a             include all toplevel commits which changed the submodule's pointer (by default only merges)"
+  echo "    -f <format>    format of notes"
+  echo
+}
+
 while [ $# -gt 0 ]; do
   KEY="$1"
   case $KEY in
+  -h|--help)
+    print_help
+    exit 1
+    ;;
   -m|--max)
     MAX_HISTORY="-$2"
     shift # past argument
@@ -28,19 +42,12 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-
-
 if [ -z "$FORMAT" ]; then
   FORMAT="%ar, %Cred%an%Creset"
 fi
 
 if [ -z $MODULE ] || [ -n "$DIFF_TOPLEVEL" -a -z "$BASE_TOPLEVEL" ]; then
-  echo "Usage: $0 <module-name> [<commit> <base-commit>]"
-  echo "Optional flags: "
-  echo "    -m <number>    maximum number of commits to list"
-  echo "    -a             include all toplevel commits which changed the submodule's pointer (by default only merges)"
-  echo "    -f <format>    format of notes"
-  echo
+  print_help
   exit 1
 fi
 
