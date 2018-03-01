@@ -1,5 +1,5 @@
 #!/bin/bash
-COMMIT_FILTER='^Merge'
+COMMIT_FILTER=' *Merge.pull.request'
 MAX_HISTORY='-50'
 
 function print_help() {
@@ -68,16 +68,22 @@ fi
 
 echo "toplevel                                 -> $MODULE_PATH ( merged by )"
 LAST_POINTER=
-for i in `git log | grep $COMMIT_FILTER -B 1 | grep commit | awk '{print $2}' | head $MAX_HISTORY`; do 
+LAST_POINTER_DATE=
+for i in `git log | grep "$COMMIT_FILTER" -B 5 | grep commit | awk '{print $2}' | head $MAX_HISTORY`; do 
   NEW_POINTER=`git rev-parse $i:$MODULE_PATH 2> /dev/null`
   if [ $? -ne 0 ]; then
     echo $i "-> submodule not found"
   elif [ "$LAST_POINTER" != "$NEW_POINTER" ]; then
     pushd $MODULE_PATH > /dev/null
-    MODULE_POINTER_INFO="(`git show --pretty="format:$FORMAT"  --name-only $NEW_POINTER | head -1`)"
+    NEW_POINTER_DATE="`git show --pretty="format:%ct"  --name-only $NEW_POINTER | head -1`"
+    MODULE_POINTER_INFO="($NEW_POINTER_DATE `git show --pretty="format:$FORMAT"  --name-only $NEW_POINTER | head -1`)"
     popd > /dev/null
     TOPLEVEL_INFO="(`git show --pretty="format:$FORMAT"  --name-only $i | head -1`)" 
+    if [ "$LAST_POINTER_DATE" -lt "$NEW_POINTER_DATE" ]; then
+      echo "went back!"
+    fi
     echo $i "$TOPLEVEL_INFO" "->" $NEW_POINTER "$MODULE_POINTER_INFO"
   fi
+  LAST_POINTER_DATE=$NEW_POINTER_DATE
   LAST_POINTER=$NEW_POINTER
 done
